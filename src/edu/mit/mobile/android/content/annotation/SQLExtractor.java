@@ -17,8 +17,10 @@ package edu.mit.mobile.android.content.annotation;
  * http://www.gnu.org/licenses/lgpl.html
  */
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -370,6 +372,24 @@ public class SQLExtractor {
         }
     }
 
+    private Field[] getAllFields(Class<?> clazz){
+
+
+        Field[] fields = clazz.getFields();
+
+        if(null!=clazz.getSuperclass()){
+
+            Field[] childFields = getAllFields(clazz.getSuperclass());
+            fields = concatenate(fields,childFields);
+
+        }
+
+        return fields;
+
+
+
+    }
+
     private void appendFKColumnDef(StringBuilder tableSQL, DBForeignKeyColumn fk, Field field)
             throws IllegalArgumentException, IllegalAccessException {
 
@@ -389,5 +409,16 @@ public class SQLExtractor {
             tableSQL.append(ContentItem._ID);
             tableSQL.append(") ON DELETE CASCADE"); // TODO make this configurable
         }
+    }
+    public static <T> T[] concatenate (T[] A, T[] B) {
+        int aLen = A.length;
+        int bLen = B.length;
+
+        @SuppressWarnings("unchecked")
+        T[] C = (T[]) Array.newInstance(A.getClass().getComponentType(), aLen+bLen);
+        System.arraycopy(A, 0, C, 0, aLen);
+        System.arraycopy(B, 0, C, aLen, bLen);
+
+        return C;
     }
 }

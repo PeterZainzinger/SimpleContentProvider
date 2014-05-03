@@ -261,6 +261,7 @@ public abstract class SimpleContentProvider extends ContentProvider {
     public void addDirUri(DBHelper dbHelper, String path, String type, int verb) {
         registerDBHelper(dbHelper);
         mDBHelperMapper.addDirMapping(mMatcherID, dbHelper, verb, type);
+
         MATCHER.addURI(mAuthority, path, mMatcherID);
         if (dbHelper instanceof ContentItemRegisterable) {
             registerContentItemType(type,
