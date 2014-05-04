@@ -1,7 +1,0 @@
-<!-- From: file:/Users/peterzainzinger/Private%20Projects/Wudu/Wudu-Android/simple-content-provider/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="0.1" package="edu.mit.mobile.android.content">
-
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="18"/>
-    
-	<!-- Shhhhh... This is a library. -->
-
-</manifest>
