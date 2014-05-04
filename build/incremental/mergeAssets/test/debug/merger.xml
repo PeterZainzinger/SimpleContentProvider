@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="debug" >
+        <source path="/Users/peterzainzinger/Private Projects/Wudu/Wudu-Android/simple-content-provider/build/bundles/debug/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/peterzainzinger/Private Projects/Wudu/Wudu-Android/simple-content-provider/src/instrumentTest/assets" />
+    </dataSet>
+
+</merger>
